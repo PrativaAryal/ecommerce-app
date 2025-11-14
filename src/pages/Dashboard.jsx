@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Typography, Button, Grid, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -11,10 +10,14 @@ const Dashboard = () => {
   const categories = ["Phone", "Laptop", "Book", "TV"];
 
   return (
-    <Box sx={{ width: "100vw", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      {/* Navbar */}
-      <Navbar />
-
+    <Box
+      sx={{
+        width: "100vw",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       {/* Main content */}
       <Box
         sx={{
@@ -27,12 +30,12 @@ const Dashboard = () => {
           padding: 4,
         }}
       >
-        {/* Title with theme color */}
+        {/* Title */}
         <Typography
           variant="h4"
           sx={{
             mb: 4,
-            color: theme.palette.primary.main, // uses theme primary color
+            color: theme.palette.primary.main,
             textAlign: "center",
             fontWeight: 600,
           }}
@@ -46,9 +49,11 @@ const Dashboard = () => {
             <Grid item key={category}>
               <Button
                 variant="contained"
-                color="primary" // uses theme primary color
+                color="primary"
                 sx={{ minWidth: 150, padding: "12px 24px" }}
-                onClick={() => navigate(`/category/${category.toLowerCase()}`)}
+                onClick={() =>
+                  navigate(`/category/${category.toLowerCase()}`)
+                }
               >
                 {category}
               </Button>
