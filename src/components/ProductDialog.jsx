@@ -22,12 +22,6 @@ const ProductDialog = ({ open, onClose, productDetails, loading }) => {
   const [reviews, setReviews] = useState([]);
   const [loadingReviews, setLoadingReviews] = useState(false);
 
-  // Reset reviews and toggle when a new product is loaded
-  useEffect(() => {
-    setShowReviews(false);
-    setReviews([]);
-  }, [productDetails]);
-
   // TanStack table setup
   const columnHelper = createColumnHelper();
   const columns = useMemo(
@@ -51,7 +45,7 @@ const ProductDialog = ({ open, onClose, productDetails, loading }) => {
 
   const table = useReactTable({ data, columns, getCoreRowModel: getCoreRowModel() });
 
-  // Fetch reviews (generic or from API)
+  // Fetch reviews
   const fetchReviews = async () => {
     if (!productDetails?.asin) return;
     setLoadingReviews(true);
